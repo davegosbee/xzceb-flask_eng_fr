@@ -1,8 +1,10 @@
+import os
 import json
+from dotenv import load_dotenv
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import os
-from dotenv import load_dotenv
+
+
 
 load_dotenv()
 
@@ -21,27 +23,25 @@ language_translator.set_service_url(url)
 
 
 
-def englishToFrench(englishText):
-    #write the code here
-    translationResponse = language_translator.translate(
-    text=englishText,
+def english_to_french(english_text):
+    translation_response = language_translator.translate(
+    text=english_text,
     model_id='en-fr').get_result()
-    
-    jsonResponse = json.loads(json.dumps(translationResponse))
-    frenchText = jsonResponse["translations"][0]["translation"]
-    
-    return frenchText
 
-def frenchToEnglish(frenchText):
-    #write the code here
-    translationResponse = language_translator.translate(
-    text=frenchText,
+    json_response = json.loads(json.dumps(translation_response))
+    french_text = json_response["translations"][0]["translation"]
+
+    return french_text
+
+def french_to_english(french_text):
+    translation_response = language_translator.translate(
+    text=french_text,
     model_id='fr-en').get_result()
-    
-    jsonResponse = json.loads(json.dumps(translationResponse))
-    englishText = jsonResponse["translations"][0]["translation"]
-   
-    return englishText
 
-print(englishToFrench("hello how are you"))
-print(frenchToEnglish('Bonjour comment vous êtes'))
+    json_response = json.loads(json.dumps(translation_response))
+    english_text = json_response["translations"][0]["translation"]
+
+    return english_text
+
+print(english_to_french("hello how are you"))
+print(french_to_english('Bonjour comment vous êtes'))
