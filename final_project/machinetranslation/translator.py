@@ -24,6 +24,9 @@ language_translator.set_service_url(url)
 
 
 def english_to_french(english_text):
+
+    if english_text == None or len(english_text) == 0:
+        return ""
     translation_response = language_translator.translate(
     text=english_text,
     model_id='en-fr').get_result()
@@ -34,6 +37,9 @@ def english_to_french(english_text):
     return french_text
 
 def french_to_english(french_text):
+    if french_text == None or len(french_text) == 0:
+        return ""
+        
     translation_response = language_translator.translate(
     text=french_text,
     model_id='fr-en').get_result()

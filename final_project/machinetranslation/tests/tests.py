@@ -8,7 +8,7 @@ class TestFrenchToEnglish(unittest.TestCase):
         self.assertEqual(translator.english_to_french('Hello'), 'Bonjour')
     
     def test_NoneToFrench(self):
-        self.assertRaises(ValueError, lambda : translator.english_to_french(None) )
+        self.assertEqual("", translator.english_to_french(None) )
 
 class TestEnglishToFrench(unittest.TestCase):
     
@@ -16,4 +16,4 @@ class TestEnglishToFrench(unittest.TestCase):
         self.assertEqual(translator.french_to_english('Bonjour'), 'Hello')
     
     def test_NoneToEnglsh(self):
-        self.assertRaises(ValueError, lambda :translator.french_to_english(None))
+        self.assertEqual("", translator.french_to_english(None))
