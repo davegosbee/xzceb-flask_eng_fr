@@ -43,5 +43,3 @@ def french_to_english(french_text):
 
     return english_text
 
-print(english_to_french("hello how are you"))
-print(french_to_english('Bonjour comment vous êtes'))
